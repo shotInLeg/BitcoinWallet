@@ -9,6 +9,13 @@ def fill_parser_args(parser: argparse.ArgumentParser):
 
 
 def mod_main(args: argparse.Namespace):
-    print(helpers.get_balance(args.public_key))
+    wallet_balance = helpers.get_balance(args.public_key)
+
+    print('Bitcoin Wallet: {}'.format(args.public_key))
+    print('BTC: {:.8f}'.format(wallet_balance / 100000000))
+    print('USD: {}'.format(helpers.convert_to(wallet_balance, 'usd')))
+    print('EUR: {}'.format(helpers.convert_to(wallet_balance, 'eur')))
+    print('RUB: {}'.format(helpers.convert_to(wallet_balance, 'rub')))
+
     return 0
 
